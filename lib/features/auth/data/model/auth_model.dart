@@ -1,5 +1,5 @@
 class AuthModel {
-  final int? id;
+  final String? id;
   final String username;
   final String email;
   final String password;
@@ -13,14 +13,18 @@ class AuthModel {
 
   factory AuthModel.fromJson(Map<String, dynamic> json) {
     return AuthModel(
-      id: json['id'],
-      username: json['username'],
-      email: json['email'],
-      password: json['password'],
+      id: json['id'].toString(),
+      username: json['username'].toString(),
+      email: json['email'].toString(),
+      password: json['password'].toString(),
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {'username': username, 'email': email, 'password': password};
+    return {
+      'username': username.toString(),
+      'email': email.toString(),
+      'password': password.toString(),
+    };
   }
 }

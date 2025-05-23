@@ -17,6 +17,7 @@ class AuthRepository {
       final res = await _authRemote.registerUser(user);
 
       await _localDatasource.saveUser(res);
+      return res;
     } catch (e) {
       print("Register failed: $e");
     }

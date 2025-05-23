@@ -1,4 +1,5 @@
 import 'package:ecommer_app_market/features/auth/presentation/pages/register_screen.dart';
+import 'package:ecommer_app_market/features/home/presentation/pages/home_screen.dart';
 import 'package:ecommer_app_market/features/onboarding/presentation/pages/on_boarding_screen.dart';
 import 'package:ecommer_app_market/features/onboarding/presentation/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,7 @@ class AppRoutes {
       ),
       GoRoute(
         path: AppNames.home,
-        builder: (context, state) => const PlaceholderScreen(title: 'Home'),
+        builder: (context, state) => const HomeScreen(),
       ),
       GoRoute(
         path: AppNames.cart,
