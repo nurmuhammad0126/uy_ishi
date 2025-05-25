@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:ecommer_app_market/core/routes/app_routes.dart';
+import 'package:ecommer_app_market/features/auth/cubit/auth_cubit.dart';
 import 'package:ecommer_app_market/features/auth/data/datasourece/local_datasource.dart';
 import 'package:ecommer_app_market/features/auth/data/datasourece/remote_datasource.dart';
 import 'package:ecommer_app_market/features/auth/data/repository/auth_repository.dart';
-import 'package:ecommer_app_market/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +20,7 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create:
-              (context) => AuthBloc(
+              (context) => AuthCubit(
                 authRepo: AuthRepository(
                   authRemote: AuthRemoteDatasource(Dio()),
                   localDatasource: AuthLocalDatasource(),

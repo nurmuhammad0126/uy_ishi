@@ -1,15 +1,16 @@
 import 'package:ecommer_app_market/core/extension/context_extensions.dart';
 import 'package:ecommer_app_market/core/extension/gap.dart';
 import 'package:ecommer_app_market/core/extension/size_extensions.dart';
-import 'package:ecommer_app_market/core/routes/app_names.dart';
-import 'package:ecommer_app_market/core/widgets/w_button.dart';
-import 'package:ecommer_app_market/features/auth/data/model/auth_model.dart';
-import 'package:ecommer_app_market/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/routes/app_names.dart';
+import '../../../../core/widgets/w_button.dart';
+import '../../cubit/auth_cubit.dart';
+import '../../cubit/auth_state.dart';
+import '../../data/model/auth_model.dart';
 import '../widgets/w_custom_text_field.dart';
 import '../widgets/w_global_bottom.dart';
 import '../widgets/w_global_text.dart';
@@ -37,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-      context.read<AuthBloc>().add(AuthRegisterEvent(user: user));
+      context.read<AuthCubit>().register(user);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -76,7 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ],
         ),
       ),
-      body: BlocListener<AuthBloc, AuthState>(
+      body: BlocListener<AuthCubit, AuthState>(
         listenWhen:
             (previous, current) =>
                 previous.bottonStatus != current.bottonStatus,
@@ -141,7 +142,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               60.g,
-              BlocBuilder<AuthBloc, AuthState>(
+              BlocBuilder<AuthCubit, AuthState>(
                 builder: (context, state) {
                   return WButton(
                     onTap: _submit,
