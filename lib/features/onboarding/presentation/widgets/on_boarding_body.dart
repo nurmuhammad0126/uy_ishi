@@ -20,8 +20,8 @@ class OnBoardingBody extends StatefulWidget {
 }
 
 class _OnBoardingBodyState extends State<OnBoardingBody> {
+  
   final PageController _pageController = PageController();
-
   final List<Map<String, String>> pages = const [
     {
       "title": "Various Collections Of The Latest Products",

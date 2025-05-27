@@ -1,4 +1,6 @@
 class AppNames {
+  static final main = "/";
+
   static final spalsh = "/splash";
   static final onBoading = "/onboarding";
   static final login = "/login";
@@ -12,4 +14,5 @@ class AppNames {
   static final payment = "/payment";
   static final map = "/map";
   static final chat = "/chat";
+  static final order = "/order";
 }

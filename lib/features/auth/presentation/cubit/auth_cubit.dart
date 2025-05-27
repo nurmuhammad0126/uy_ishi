@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ecommer_app_market/features/auth/cubit/auth_state.dart';
+import 'package:ecommer_app_market/features/auth/presentation/cubit/auth_state.dart';
 
-import '../data/model/auth_model.dart';
-import '../data/repository/auth_repository.dart';
+import '../../data/model/auth_model.dart';
+import '../../data/repository/auth_repository.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   final AuthRepository authRepo;

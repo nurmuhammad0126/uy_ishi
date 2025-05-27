@@ -8,8 +8,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/routes/app_names.dart';
 import '../../../../core/widgets/w_button.dart';
-import '../../cubit/auth_cubit.dart';
-import '../../cubit/auth_state.dart';
+import '../cubit/auth_cubit.dart';
+import '../cubit/auth_state.dart';
 import '../../data/model/auth_model.dart';
 import '../widgets/w_custom_text_field.dart';
 import '../widgets/w_global_bottom.dart';
@@ -83,7 +83,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 previous.bottonStatus != current.bottonStatus,
         listener: (context, state) {
           if (state.bottonStatus == AuthStatus.success) {
-            context.go(AppNames.home);
+            context.go(AppNames.login);
           } else if (state.bottonStatus == AuthStatus.error) {
             ScaffoldMessenger.of(context)
               ..clearSnackBars()
@@ -142,7 +142,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               60.g,
-              BlocBuilder<AuthCubit, AuthState>(
+              BlocConsumer<AuthCubit, AuthState>(
                 builder: (context, state) {
                   return WButton(
                     onTap: _submit,
@@ -168,11 +168,17 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ),
                   );
-                },
+                }, listener: (BuildContext context, AuthState state) { 
+                  if (state.bottonStatus == AuthStatus.success) {
+                    context.go(AppNames.home);
+                  }
+                 },
               ),
               10.g,
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.go(AppNames.login);
+                },
                 child: GlobalText(
                   text: 'Or using other method',
                   color: Colors.grey.withValues(alpha: 0.7),

@@ -1,12 +1,12 @@
 class AuthModel {
   final String? id;
-  final String username;
+  final String? username;
   final String email;
   final String password;
 
   AuthModel({
     this.id,
-    required this.username,
+    this.username,
     required this.email,
     required this.password,
   });

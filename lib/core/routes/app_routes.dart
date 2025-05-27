@@ -1,16 +1,24 @@
 import 'package:ecommer_app_market/features/auth/presentation/pages/register_screen.dart';
-import 'package:ecommer_app_market/features/home/presentation/pages/home_screen.dart';
+import 'package:ecommer_app_market/features/main_screen.dart';
 import 'package:ecommer_app_market/features/onboarding/presentation/pages/on_boarding_screen.dart';
 import 'package:ecommer_app_market/features/onboarding/presentation/pages/splash_screen.dart';
+import 'package:ecommer_app_market/features/order/presentation/pages/order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/cart/presentation/pages/cart_screens.dart';
+import '../../features/home/presentation/pages/home_screen.dart';
 import 'app_names.dart';
 
 class AppRoutes {
   static final GoRouter router = GoRouter(
-    initialLocation: AppNames.spalsh,
+    initialLocation: AppNames.main,
     routes: [
+      GoRoute(
+        path: AppNames.main,
+        builder: (context, state) => const MainScreen(),
+      ),
+
       GoRoute(
         path: AppNames.spalsh,
         builder: (context, state) => const SplashScreen(),
@@ -47,7 +55,12 @@ class AppRoutes {
       ),
       GoRoute(
         path: AppNames.cart,
-        builder: (context, state) => const PlaceholderScreen(title: 'Cart'),
+        builder: (context, state) => const CartScreen(),
+      ),
+
+      GoRoute(
+        path: AppNames.order,
+        builder: (context, state) => const OrderScreen(),
       ),
       GoRoute(
         path: AppNames.editCart,
